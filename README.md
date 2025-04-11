@@ -1,9 +1,5 @@
-# React Template
+# CKEditor test
 
-- create by create-react-app
-- react 18.2.0
-- remove some extra stuff, something like Component test case
-- useage
-  ```
-  click **Use this template** > **Create a new repository**
-  ```
+plugins: Color Button, Font Size and Family, Justify
+Document: https://github.com/U1320100568/note/blob/master/JS_Library/CKEditor.md
+Server: https://github.com/U1320100568/test-ckeditor-server

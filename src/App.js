@@ -17,20 +17,14 @@ import { CKEditor } from "ckeditor4-react";
 
 function App() {
   const [uploadUrl, setUploadUrl] = React.useState(
-    // "http://localhost:3100/upload?CKEditor=editor1&CKEditorFuncNum=1&langCode=zh"
-    "https://tda-api.revtel2.com/tda/file_upload?CKEditorFuncNum=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImJjMzZlNTQ2LWYyNGEtNDYzNS1hNzdiLWVlY2IyMDYwMjUwNCJ9.eyJhdWQiOiJ0ZGEiLCJzdWIiOiI2NzdiNDJjMzcxZGY5ODQxMjc3MWUwZjIiLCJ0eXAiOiJhY2Nlc3MiLCJpc3MiOiJhdXRoLnJldnRlbC1hcGkuY29tL3Y0IiwiZW52IjoicHJvZHVjdGlvbiIsImdycCI6ImFkbWluIiwiaWF0IjoxNzQzNDEzMTQ5LCJleHAiOjE3NDM0MjAzNDksImp0aSI6ImFmNDVlZjAwLWVlYmEtNDc0Yy04YjE4LWEzMzQ1ZTMzNzNjYyIsImV4dCI6eyJ1c2VybmFtZSI6ImFkbWluIn19.lb2S8LJCe1rT-kSweaRduvk6dz-zCVYbX0wjQeNV7fNeppptjm2A5YGTvN87OKeH_i6dnQdFgoOQbHy7ZpgT7LaAt-YEa1L4XEVwRfkInqtSeFkjzqtabjb0bOxtlLv5rFoDpqebRbQ_8UrB9YQxO4vhE_MwwO4hLhfk7PFlML-3NKXHPVmoVERGXH7SpiL_V-5kH1e9qAF5GOzP-Vig2C9yJ7M_hq2GTU6pR0aMEOO96YTlQJK8N_jfMjZL0RPKNO02PxAg1XEETpsfvDNEc2j7y5HqL6ckdwMLurRrGLEsge0CZhk4vICl8XPBT8pZIzQG_0ce6-ZmHE5neBoLkw"
+    "http://localhost:3100/upload?CKEditor=editor1&CKEditorFuncNum=1&langCode=zh"
   );
   const [key, setKey] = React.useState((Math.random() * 10000000).toFixed());
 
   return (
     <div className="App">
-      <form action={uploadUrl} method="POST" enctype="multipart/form-data">
-        <input type="file" name="upload"></input>
-
-        <button type="submit">Upload</button>
-      </form>
-
       <div style={{ padding: 30 }}>
+        <h3>Upload Url</h3>
         <input
           value={uploadUrl}
           onChange={(e) => setUploadUrl(e.target.value)}
@@ -38,14 +32,32 @@ function App() {
           placeholder="輸入上傳網址"
           style={{ width: "100%", marginBottom: 20, padding: 10 }}
         />
+        <h3>Pure Upload Testing</h3>
+        <form
+          action={uploadUrl}
+          method="POST"
+          enctype="multipart/form-data"
+          style={{
+            marginBottom: 20,
+            borderBottom: "solid 1px #000",
+            paddingBottom: 20,
+          }}
+        >
+          <input type="file" name="upload"></input>
 
-        {/* <CKEditor
+          <button type="submit">Upload</button>
+        </form>
+
+        <h3>CKEditor Testing</h3>
+
+        {/* ckeditor 4 */}
+        <CKEditor
           key={key}
           initData="<p>Hello from CKEditor 4!</p>"
           onInstanceReady={(e) => {
             console.log("event instance ready", e);
           }}
-          //http://localhost:3000
+          // http://localhost:3000
           editorUrl="/ckeditor/ckeditor.js" // 4.22.1
           // editorUrl={"http://localhost:3100/ckeditor/ckeditor.js"}
           // debug={true}
@@ -95,7 +107,7 @@ function App() {
 
             console.log("onBlur editor.getData", editor.getData());
           }}
-        /> */}
+        />
 
         {/* ckeditor 5 */}
         {/* <CKEditor
